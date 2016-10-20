@@ -1,0 +1,75 @@
+#!/usr/bin/env node
+'use strict'
+
+const orgName = process.env.QIITA_ORGANIZATION
+const port    = process.env.REDIS_PORT     || 6379
+const host    = process.env.REDIS_HOST     || '127.0.0.1'
+const db      = process.env.REDIS_DATABASE || 0
+const prefix  = process.env.REDIS_PREFIX   || null
+const token   = process.env.SLACK_API_TOKEN
+const channel = process.env.SLACK_CHANNEL
+const botUser = {
+  username: process.env.SLACK_USERNAME || 'Qiita',
+  icon_url: process.env.SLACK_ICON_URL || '',
+}
+
+// ----------------------------------------------------------------------------
+
+if (!orgName) {
+  console.error('Error: `QIITA_ORGANIZATION` not found')
+  return;
+}
+
+if (!token) {
+  console.error('Error: `SLACK_API_TOKEN` not found')
+  return;
+}
+
+if (!channel) {
+  console.error('Error: `SLACK_CHANNEL` not found')
+  return;
+}
+
+// ----------------------------------------------------------------------------
+
+const co       = require('co')
+const redis    = require('redis')
+const bluebird = require('bluebird')
+
+const { Organization } = require('../lib/qiita')
+const History          = require('../lib/history')
+const Slack            = require('../lib/slack')
+
+bluebird.promisifyAll(redis.RedisClient.prototype)
+bluebird.promisifyAll(redis.Multi.prototype)
+
+// ----------------------------------------------------------------------------
+
+const client       = redis.createClient(port, host, { db, prefix })
+const history      = new History({ redis: client })
+const organization = new Organization({ name: orgName })
+const slack        = new Slack({ token, channel, botUser })
+
+co(function* () {
+  const today     = new Date()
+  const yesterday = new Date()
+  yesterday.setDate(yesterday.getDate() - 1)
+
+  // fetch & restore count
+  const current = yield organization.info()
+  const prev    = yield history.get(yesterday)
+
+  // save today count
+  yield history.set(today, current)
+
+  // post to slack
+  yield slack.post(current, prev)
+}).then(
+  _   => client.quit(),
+  err => {
+    console.error(err)
+    client.quit()
+  }
+)
+
+// vim: se et ft=javascript ts=2 sw=2 sts=2 :
