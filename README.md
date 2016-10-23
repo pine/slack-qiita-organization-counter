@@ -23,10 +23,20 @@ $ SLACK_API_TOKEN=XXX bin/slack-qiita-organization-counter
 ## Options
 You can set any options uses environment variables.
 
-- `SLACK_API_TOKEN` Slack API Token (**required**)
+- `QIITA_ORGANIZATION` Qiita organization name (**required**)
+- `SLACK_API_TOKEN` Slack API token (**required**)
+- `SLACK_CHANNEL` Slack channel/group name (**required**))
 - `SLACK_USERNAME` Slack username
   - Default: `'Qiita'`
 - `SLACK_ICON_URL` Slack icon URL
+  - Default: `''`
+- `REDIS_PORT` Redis port number
+  - Default: `6379`
+- `REDIS_HOST` Redis host name
+  - Default: `'127.0.0.1'`
+- `REDIS_DATABASE` Redis database number
+  - Default: `0`
+- `REDIS_PREFIX` Redis key prefix
   - Default: `''`
 
 ## License
