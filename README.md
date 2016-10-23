@@ -17,7 +17,8 @@ Count posts/stocks of your Qiita organization, and post counting to your Slack.
 $ git clone https://github.com/pine/slack-qiita-organization-counter.git
 $ cd slack-qiita-organization-counter
 $ npm install
-$ SLACK_API_TOKEN=XXX bin/slack-qiita-organization-counter
+$ QIITA_ORGANIZATION=xxx SLACK_API_TOKEN=XXX SLACK_CHANNEL=xxx \
+  bin/slack-qiita-organization-counter
 ```
 
 ## Options
