@@ -1,5 +1,5 @@
-slack-github-bot
-----------------
+slack-qiita-organization-counter
+--------------------------------
 
 Count posts/stocks of your Qiita organization, and post counting to your Slack.
 
