@@ -1,5 +1,6 @@
 slack-qiita-organization-counter
 --------------------------------
+[![Gemnasium](https://img.shields.io/gemnasium/pine/slack-qiita-organization-counter.svg?style=flat-square)](https://gemnasium.com/github.com/pine/slack-qiita-organization-counter)
 
 Count posts/stocks of your Qiita organization, and post counting to your Slack.
 
