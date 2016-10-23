@@ -26,7 +26,7 @@ You can set any options uses environment variables.
 
 - `QIITA_ORGANIZATION` Qiita organization name (**required**)
 - `SLACK_API_TOKEN` Slack API token (**required**)
-- `SLACK_CHANNEL` Slack channel/group name (**required**))
+- `SLACK_CHANNEL` Slack channel/group name (**required**)
 - `SLACK_USERNAME` Slack username
   - Default: `'Qiita'`
 - `SLACK_ICON_URL` Slack icon URL
