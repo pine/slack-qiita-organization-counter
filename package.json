@@ -5,7 +5,7 @@
   "main": "index.js",
   "bin": "./bin/slack-qiita-organization-counter",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ava -v"
   },
   "dependencies": {
     "@slack/client": "^3.6.0",
@@ -15,6 +15,12 @@
     "got": "^6.5.0",
     "redis": "^2.6.2",
     "ymd": "^1.0.0"
+  },
+  "devDependencies": {
+    "ava": "^0.16.0",
+    "proxyquire": "^1.7.10",
+    "randomstring": "^1.1.5",
+    "sinon": "^1.17.6"
   },
   "engines": {
     "node": ">= 6.0.0"
