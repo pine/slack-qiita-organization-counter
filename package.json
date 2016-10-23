@@ -1,13 +1,13 @@
 {
   "name": "slack-qiita-organization-counter",
   "version": "1.0.0",
-  "description": "",
+  "description": "Count posts/stocks of your Qiita organization, and post counting to your Slack.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "MIT",
+  "license": "Unlicense",
   "dependencies": {
     "@slack/client": "^3.6.0",
     "bluebird": "^3.4.6",
