@@ -10,7 +10,7 @@ Count posts/stocks of your Qiita organization, and post counting to your Slack.
 
 ## Requirements
 
-- Node.js v6 ~
+- Node.js v6.9 LTS ~
 - Redis 2.6.12 ~
 
 ## Getting Started
