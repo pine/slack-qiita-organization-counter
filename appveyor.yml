@@ -1,4 +1,10 @@
 install:
+  # Redis
+  - choco install redis-64
+  - redis-server --service-install
+  - redis-server --service-start
+
+  # Node
   - ps: Update-NodeJsInstallation (Get-NodeJsLatestBuild $env:nodejs_version)
   - node --version
   - npm --version
