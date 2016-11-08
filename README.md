@@ -41,6 +41,8 @@ You can set any options uses environment variables.
   - Default: `0`
 - `REDIS_PREFIX` Redis key prefix
   - Default: `''`
+- `HISTORY_REPAIR_DAYS` repair counter of Qiita if it not run in holidays.
+  - Default: `5`
 
 ## License
 
