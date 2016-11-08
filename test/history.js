@@ -27,7 +27,7 @@ test.afterEach(async t => {
 })
 
 
-test('get/set', async t => {
+test('get/set (basic)', async t => {
   const history = new History({ redis: t.context.client })
 
   t.deepEqual(await history.get(new Date(2016, 1, 1)), null)
@@ -37,4 +37,18 @@ test('get/set', async t => {
   await history.set(new Date(2016, 1, 2), { baz: 3 })
   t.deepEqual(await history.get(new Date(2016, 1, 1)), { foo: 1 })
   t.deepEqual(await history.get(new Date(2016, 1, 2)), { baz: 3 })
+  t.deepEqual(await history.get(new Date(2016, 1, 3)), null)
+})
+
+
+test('get (repair)', async t => {
+  const history = new History({ redis: t.context.client, repair: 2 })
+
+  t.deepEqual(await history.get(new Date(2016, 1, 2)), null)
+
+  await history.set(new Date(2016, 1, 1), { foo: 1 })
+  t.deepEqual(await history.get(new Date(2016, 1, 1)), { foo: 1 })
+  t.deepEqual(await history.get(new Date(2016, 1, 2)), { foo: 1 })
+  t.deepEqual(await history.get(new Date(2016, 1, 3)), { foo: 1 })
+  t.deepEqual(await history.get(new Date(2016, 1, 4)), null)
 })

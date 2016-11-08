@@ -2,10 +2,11 @@
 'use strict'
 
 const orgName = process.env.QIITA_ORGANIZATION
-const port    = process.env.REDIS_PORT     || 6379
-const host    = process.env.REDIS_HOST     || '127.0.0.1'
-const db      = process.env.REDIS_DATABASE || 0
-const prefix  = process.env.REDIS_PREFIX   || null
+const repair  = process.env.HISTORY_REPAIR_DAYS || 5
+const port    = process.env.REDIS_PORT          || 6379
+const host    = process.env.REDIS_HOST          || '127.0.0.1'
+const db      = process.env.REDIS_DATABASE      || 0
+const prefix  = process.env.REDIS_PREFIX        || null
 const token   = process.env.SLACK_API_TOKEN
 const channel = process.env.SLACK_CHANNEL
 const botUser = {
@@ -46,7 +47,7 @@ bluebird.promisifyAll(redis.Multi.prototype)
 // ----------------------------------------------------------------------------
 
 const client       = redis.createClient(port, host, { db, prefix })
-const history      = new History({ redis: client })
+const history      = new History({ redis: client, repair })
 const organization = new Organization({ name: orgName })
 const slack        = new Slack({ token, channel, botUser })
 
