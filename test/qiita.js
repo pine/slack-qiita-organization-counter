@@ -33,7 +33,7 @@ const { Organization } = proxyquire('../lib/qiita', {
                 </div>
                 <div class="organizationHeader_stats_container">
                   <div class="organizationHeader_stats_value"><span class="fa fa-folder-o"></span> 9876</div>
-                  <div class="organizationHeader_stats_label">Stocks</div>
+                  <div class="organizationHeader_stats_label">Likes</div>
                 </div>
               </div>
             </div>
@@ -54,5 +54,5 @@ test('info', async t => {
   const info = await org.info()
 
   t.is(info.post, 123)
-  t.is(info.stock, 9876)
+  t.is(info.like, 9876)
 })
