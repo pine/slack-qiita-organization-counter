@@ -8,19 +8,19 @@
     "test": "ava -v"
   },
   "dependencies": {
-    "@slack/client": "^3.6.0",
+    "@slack/client": "^4.12.0",
     "bluebird": "^3.4.6",
     "cheerio": "^0.22.0",
     "co": "^4.6.0",
-    "got": "^6.5.0",
+    "got": "^9.6.0",
     "redis": "^2.6.2",
     "ymd": "^1.0.0"
   },
   "devDependencies": {
-    "ava": "^0.16.0",
-    "proxyquire": "^1.7.10",
+    "ava": "^1.4.1",
+    "proxyquire": "^2.1.0",
     "randomstring": "^1.1.5",
-    "sinon": "^1.17.6"
+    "sinon": "^7.3.1"
   },
   "engines": {
     "node": ">= 6.0.0"
