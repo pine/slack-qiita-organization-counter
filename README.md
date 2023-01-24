@@ -1,8 +1,11 @@
+# :warning: DEPRECATED
+
+> This repository is no longer maintained.
+
+----
+
 slack-qiita-organization-counter
 --------------------------------
-[![Travis branch](https://img.shields.io/travis/pine/slack-qiita-organization-counter/master.svg?style=flat-square)](https://travis-ci.org/pine/slack-qiita-organization-counter)
-[![AppVeyor branch](https://img.shields.io/appveyor/ci/pine/slack-qiita-organization-counter/master.svg?style=flat-square)](https://ci.appveyor.com/project/pine/slack-qiita-organization-counter)
-[![Gemnasium](https://img.shields.io/gemnasium/pine/slack-qiita-organization-counter.svg?style=flat-square)](https://gemnasium.com/github.com/pine/slack-qiita-organization-counter)
 
 Count posts/stocks of your Qiita organization, and post counting to your Slack.
 
